@@ -1,0 +1,1 @@
+INSERT INTO clientes (nombre, apellido, email, create_at) values ('Robert', 'Alvarado', 'treborlp@gmail.com', '2019-01-01');
