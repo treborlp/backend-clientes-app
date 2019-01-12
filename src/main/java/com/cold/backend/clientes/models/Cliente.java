@@ -14,6 +14,11 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @PrePersist
+    public void prePersist(){
+        createAt = new Date();
+    }
+
     @Column(name = "nombre")
     private String nombre;
 
