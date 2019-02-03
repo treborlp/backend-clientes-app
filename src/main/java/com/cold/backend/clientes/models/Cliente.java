@@ -22,8 +22,8 @@ public class Cliente implements Serializable {
         createAt = new Date();
     }
 
-    @NotEmpty
-    @Size(min = 4, max = 12)
+    @NotEmpty(message = "Tienes que completar el campo")
+    @Size(min = 4, max = 12 , message = "No puedes escapar al intervalo 4> y >8")
     @Column(name = "nombre",nullable = false)
     private String nombre;
 
