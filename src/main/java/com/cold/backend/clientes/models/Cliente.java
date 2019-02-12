@@ -3,6 +3,7 @@ package com.cold.backend.clientes.models;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -17,10 +18,10 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @PrePersist
+    /*@PrePersist
     public void prePersist(){
         createAt = new Date();
-    }
+    }*/
 
     @NotEmpty(message = "Tienes que completar el campo")
     @Size(min = 4, max = 12 , message = "No puedes escapar al intervalo 4> y >8")
@@ -36,6 +37,7 @@ public class Cliente implements Serializable {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @NotNull(message = "El campo fecha no puede estar vacio")
     @Column(name="create_at")
     @Temporal(TemporalType.DATE)
     private Date createAt;
