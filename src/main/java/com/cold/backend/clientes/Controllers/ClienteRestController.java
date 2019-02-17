@@ -229,7 +229,16 @@ public class ClienteRestController {
         }
 
         if(!recurso.exists() && !recurso.isReadable()){
-            throw new RuntimeException("El archivo no existe y no se puede leer im so sorry");
+
+            rutaArchivo = Paths.get("src/main/resources/static/images").resolve("no-usuario.png").toAbsolutePath();
+
+            try {
+                recurso = new UrlResource(rutaArchivo.toUri());
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+
+            //("El archivo no existe y no se puede leer im so sorry");
         }
 
         HttpHeaders cabecera = new HttpHeaders();
