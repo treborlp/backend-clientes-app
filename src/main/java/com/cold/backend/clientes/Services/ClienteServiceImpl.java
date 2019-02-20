@@ -2,6 +2,7 @@ package com.cold.backend.clientes.Services;
 
 import com.cold.backend.clientes.dao.IClienteDao;
 import com.cold.backend.clientes.models.Cliente;
+import com.cold.backend.clientes.models.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -44,5 +45,11 @@ public class ClienteServiceImpl implements IClienteService {
     @Transactional
     public void delete(Long id) {
         clienteDao.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Region> findAllRegiones() {
+        return clienteDao.findAllRegiones();
     }
 }

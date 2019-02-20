@@ -1,6 +1,7 @@
 package com.cold.backend.clientes.Services;
 
 import com.cold.backend.clientes.models.Cliente;
+import com.cold.backend.clientes.models.Region;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,6 +18,8 @@ public interface IClienteService {
     Cliente save(Cliente cliente);
 
     void delete(Long id);
+
+    List<Region> findAllRegiones();
 
 
 

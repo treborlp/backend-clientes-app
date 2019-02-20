@@ -3,6 +3,7 @@ package com.cold.backend.clientes.Controllers;
 import com.cold.backend.clientes.Services.IClienteService;
 import com.cold.backend.clientes.Services.IUploadFileService;
 import com.cold.backend.clientes.models.Cliente;
+import com.cold.backend.clientes.models.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.DataAccessException;
@@ -127,6 +128,8 @@ public class ClienteRestController {
             clienteActual.setApellido(cliente.getApellido());
             clienteActual.setNombre(cliente.getNombre());
             clienteActual.setEmail(cliente.getEmail());
+            clienteActual.setCreateAt(cliente.getCreateAt());
+            clienteActual.setRegion(cliente.getRegion());
 
             clienteActualizado = clienteService.save(clienteActual);
 
@@ -215,6 +218,11 @@ public class ClienteRestController {
 
         return new ResponseEntity<Resource>(recurso, cabecera, HttpStatus.OK);
 
+    }
+
+    @GetMapping("/clientes/regiones")
+    public List<Region> listarRegiones(){
+        return clienteService.findAllRegiones();
     }
 
 }
